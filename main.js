@@ -1,6 +1,8 @@
 var APK_PATH = 'D:\\UCWorkspace\\97c5\\BrowserShell\\platform\\android\\bin\\97c5.apk';
 //var APK_PATH = '/Users/chenzhipeng/Downloads/uc.apk';
 
+/*
+
 var exec = require('child_process').exec;
 
 exec('adb devices', function(error, stdout, stderr) {
@@ -20,6 +22,38 @@ exec('adb devices', function(error, stdout, stderr) {
 	}
 
 });
+*/
+
+function getDevicesList(aCallback) {
+
+	if (aCallback) {
+		var exec = require('child_process').exec;
+
+		exec('adb devices', function(error, stdout, stderr) {
+
+		var lines = stdout.split('\n');
+
+		var ret = [];
+
+		for ( var i = 1; i < lines.length; i++) {
+
+			var line = lines[i].trim();
+
+			if (0 == line.length) {
+				continue;
+			}
+
+			var devicesSn = line.split('device')[0];
+
+			ret.push(devicesSn);
+
+		};
+
+		aCallback(ret);
+
+		});
+	}
+}
 
 function installAPK(aDeviceSn, aStartAfterInstall) {
 
@@ -55,3 +89,13 @@ var Log = {
 	}
 
 };
+
+function main() {
+	getDevicesList(function(aList){
+		for(var i = 0; i < aList.length; i++) {
+			Log.i(i + ":" + aList[i]);
+		}
+	});
+}
+
+main();
