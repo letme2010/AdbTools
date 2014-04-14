@@ -43,7 +43,7 @@ var DEVICE_MOCK_LIST = ["192.168.56.101:5555", "192.168.56.102:5555", "ADKEK33K2
 
 function getSelectedDevicesList(aCallback) {
 	if (aCallback) {
-
+		aCallback(gCheckedDeviceSnList);
 	}
 }
 
@@ -348,7 +348,7 @@ function testDeviceAdded() {
 function main() {
 
 	$('#' + VIEW_ID.TERMINAL_ID).bind('keydown', 'enter', function(ev){
-		if (ev.ctrlKey && (13 == ev.keyCode)) {
+		if (13 == ev.keyCode) {
 			onSendCommandButtonClick();
 		}
 	});
