@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<title>AdbTools</title>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+		<style>
+			#device_list_view {
+				float:right;
+				width:300px;
+				height:100%;
+				background-color: gray;
+			}		
+
+			.deivce_block {
+				width: 100%;
+				height:60px;
+				background-color: white;
+				border: 1px gray solid;
+			}
+
+			#terminal {
+				width:80%;
+				height: 60px;
+				background-color: rgb(0,0,200);
+				color: white;
+				font-size: 30px;
+			}
+
+			#left_block {
+				float: left;
+				width: 700px;
+				height: 100%;
+				position: relative;
+			}
+
+			.send_command_button {
+				width: 120px;
+				height:60;
+				font-size: 30px;
+				margin-top: 10px;
+				margin-left: 4px;
+			}
+
+			.log_span {
+				color:black;
+				font-size: 18px;
+			}
+
+			.err_span {
+				color: red;
+			}
+
+			#console {
+				float:left;
+			}
+
+			.time_span {
+				color:blue;
+				font-size: 20px;
+			}
+
+		</style>
+	</head>
+	<body onload="main();">
+
+		<div id="left_block">
+
+			<div id="console">
+			</div>
+			<p>
+				<input id="terminal"/><button class="send_command_button" onclick="onSendCommandButtonClick();">Send</button>
+			</p>
+
+		</div>
+
+		<div id="device_list_view">
+		</div>
+
+
+
+	</body>
+</html>
